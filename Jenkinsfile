@@ -28,7 +28,7 @@ pipeline {
         script {
           sshagent(['ec2-server-key']) {
             sh '''
-            ssh ec2-user@172.31.31.149 "
+            ssh ec2-user@54.254.122.253 "
               docker pull gynx99/jump-app:1.1 &&
               docker stop jump-app || true &&
               docker rm jump-app || true &&
