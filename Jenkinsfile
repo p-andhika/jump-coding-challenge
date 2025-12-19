@@ -1,6 +1,6 @@
 pipeline {
   agent any
-  environtment {
+  environment {
     SERVER_CREDENTIALS = credentials('server-credentials')
   }
 
