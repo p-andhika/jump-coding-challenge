@@ -8,6 +8,7 @@ pipeline {
   stages {
     stage("build") {
       steps {
+        echo "version ${VERSION}"
         echo 'building the application...'
         echo "build with ${SERVER_CREDENTIALS}"
         // sh 'npm install'
