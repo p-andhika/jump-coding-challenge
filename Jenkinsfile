@@ -26,7 +26,6 @@ pipeline {
         echo 'deploy the application...'
 
         script {
-          def dockerCmd = 'docker run -p 3000:3000 -d gynx99/jump-app:1.1'
           sshagent(['ec2-server-key']) {
             sh '''
             ssh ec2-user@172.31.31.149 "
