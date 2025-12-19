@@ -1,11 +1,15 @@
 pipeline {
   agent any
+  environtment {
+    SERVER_CREDENTIALS = credentials('server-credentials')
+  }
 
   stages {
     stage("build") {
       steps {
         echo 'building the application...'
-        sh 'npm install'
+        echo "build with ${SERVER_CREDENTIALS}"
+        // sh 'npm install'
       }
     }
 
