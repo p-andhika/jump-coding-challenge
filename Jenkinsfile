@@ -26,15 +26,10 @@ pipeline {
         echo 'deploy the application...'
 
         script {
+          def dockerCmd = 'docker run -p 3000:3000 -d gynx99/jump-app:1.1'
+
           sshagent(['ec2-server-key']) {
-            sh '''
-            ssh ec2-user@54.254.122.253 "
-              docker pull gynx99/jump-app:1.1 &&
-              docker stop jump-app || true &&
-              docker rm jump-app || true &&
-              docker run -d --name jump-app -p 3000:3000 gynx99/jump-app:1.1
-            "
-            '''
+            sh "ssh -o StrictHostKeyChecking=no ec2-user@54.254.122.253 ${dockerCmd}"
           }
         }
       }
