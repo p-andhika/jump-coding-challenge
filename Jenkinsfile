@@ -29,7 +29,7 @@ pipeline {
           def dockerCmd = 'docker run -p 3000:3000 -d gynx99/jump-app:1.1'
           sshagent(['ec2-server-key']) {
             sh '''
-            ssh ec2-user@EC2_IP "
+            ssh ec2-user@172.31.31.149 "
               docker pull gynx99/jump-app:1.1 &&
               docker stop jump-app || true &&
               docker rm jump-app || true &&
